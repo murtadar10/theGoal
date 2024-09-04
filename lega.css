@@ -1,0 +1,363 @@
+
+body {
+    direction: rtl ;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+ 
+ #score1 , #score2 {
+width: 50px;
+ }
+ .name{
+    width: 100%;
+ }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    text-align: center;
+    color: #007bff;
+  }
+  textarea,
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+  }
+   .goal {
+  display: inline-block;
+}
+
+/* .goal:before {
+  
+  margin-right: 5px;
+} */
+
+  .teams{
+    width: 150px;
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 1rem;
+  }
+  /* .red {
+    display: block;
+    border: 1px solid rgb(0, 0, 0) ;
+    background-color: red;
+  width: 15px;
+  height: 18px; 
+  }
+  .yellow{
+    display: block;
+    border: 1px solid rgb(0, 0, 0) ;
+    background-color: yellow;
+  width: 15px;
+  height: 18px; 
+
+  } */
+  button {
+    padding: 10px 20px;
+    margin: 10px 5px 0 0;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  .match-summary {
+    margin-bottom: 20px;
+  }
+  .summary-list {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  .summary-list p {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  .team-section {
+    margin-bottom: 20px;
+  }
+  .team-section h2 {
+    margin-top: 20px;
+    color: #007bff;
+  }
+  .player-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  .player-table th,
+  .player-table td,.player-table tr {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  .player-table th {
+    background-color: #f2f2f2;
+  }
+table .player-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+
+    /* text-align: center; */
+    width: 80%;
+    border-collapse: collapse;
+}
+.player-table th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.player-table th {
+    background-color: #f2f2f2;
+}
+input, select {
+    margin: 10px 0;
+    
+}
+.top-4 {
+    background-color: #d9f9d991; /* لون أخضر */
+}
+.bottom-2 {
+    background-color: #f9d9d9; /* لون أحمر */
+}
+img {
+  display: inline;
+      width: 12px;
+  } .go {
+    display: inline;
+        width: 23px;
+    }
+
+    /* ========================كود خاص للجدول ============================ */
+    .modal {
+      display: none; /* إخفاء النافذة افتراضيًا */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+  }
+  .modal-content {
+    
+    text-align: -webkit-center;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 0 20px ;
+    border: 1px solid #888;
+    width:1000px;
+  }
+  .modal-content .img{
+    width: 100%;
+    height: auto;
+    background-image: url("photo_2024-08-08_20-51-52.jpg");
+  }
+  .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
+
+/* اضافو جديدة ======================================================= */
+  
+/* تنسيق عام للصفحة */
+body {
+  background-color: #F8F9FA;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+/* تنسيق للعنوان */
+h1 {
+  font-size: 1.5rem;
+  color: #800000; /* اللون الأحمر الداكن */
+  margin: 0 0 20px 0;
+}
+
+/* تنسيق الجدول */
+ .table2  {
+  padding-right: 10px;
+
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: white;
+ 
+  overflow: hidden;
+}
+
+/* تنسيق رؤوس الجدول */
+.table2  th {
+  background-color: #888;
+  color: rgb(255 255 255);
+  font-size: 1rem;
+  /* margin-left: 10px; */
+  border: 10px solid;
+  text-align: center;
+  
+}
+
+/* تنسيق خلايا الجدول */
+.table2 td {
+
+  border: 0;
+  /* padding-right: 10px; */
+  /* margin-right: 19px; */
+  padding-right: 30px;
+  /* text-align: center; */
+  border-bottom: 1px solid #0000003b;
+  font-size: 1.3rem;
+  padding: 0 35px 0 0;
+}
+
+/* تظليل الصفوف */
+/* .table2 tr:nth-child(odd) {
+  background-color: #f2f2f2;
+} */
+
+/* .table2 tr:nth-child(even) {
+  background-color: #ffffff;
+} */
+/* .table2 tr:nth-child(5) {
+  background-color: #f2f2f2;
+  border-top: 2px solid rgb(255, 106, 106) ;
+} */
+
+/* تظليل الصف عند المرور عليه */
+.table2 tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* خلايا الفرق */
+.table2 td.team {
+  display: flex;
+  /* align-items: center; */
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+
+/* صور الفرق */
+.table2 td img {
+  width: 30px;
+
+  margin-right: 10px;
+}
+
+/* تظليل الصفوف المميزة */
+/* تنسيق رقم الترتيب */
+.rank {
+  font-weight: bold;
+  color: #ff0000;
+
+}
+
+/* ============================================================ */
+
+
+  /* نافذة منبثقة */
+
+  /* طبقة التغطية */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  /* نافذة منبثقة */
+  .popup-container {
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ddd;
+    z-index: 1000;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  /* زر إغلاق النافذة المنبثقة */
+  .popup-close-button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  /* ملخص المباراة */
+  .match-summary {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  /* تأثير الدخول */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+.titleOfTable {
+  
+  font-size: 35px;
+  border-radius: 0px 0px 10px 10px;
+  place-content: center;
+  text-align: center;
+  /* position: absolute; */
+  top: 174px;
+  left: 400px;
+  margin-bottom: 70px;
+  margin-top: 0;
+  background-color: #990000;
+  color: white;
+  height: 20%;
+  width: 40%;
+}

@@ -1,0 +1,107 @@
+
+body {
+  direction: rtl ;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+#score1 , #score2 {
+width: 50px;
+}
+.name{
+  width: 100%;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+  text-align: center;
+  color: #007bff;
+}
+textarea,
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.goal {
+  display: inline-block;
+}
+
+.goal:before {
+  content: url('https://img.icons8.com/ios/50/000000/soccer-ball.png');
+  margin-right: 5px;
+}
+
+.teams{
+  width: 150px;
+}
+.red {
+  display: block;
+  border: 1px solid rgb(0, 0, 0) ;
+  background-color: red;
+width: 15px;
+height: 18px; 
+}
+.yellow{
+  display: block;
+  border: 1px solid rgb(0, 0, 0) ;
+  background-color: yellow;
+width: 15px;
+height: 18px; 
+
+}
+button {
+  padding: 10px 20px;
+  margin: 10px 5px 0 0;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0056b3;
+}
+.match-summary {
+  margin-bottom: 20px;
+}
+.summary-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+.summary-list p {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.team-section {
+  margin-bottom: 20px;
+}
+.team-section h2 {
+  margin-top: 20px;
+  color: #007bff;
+}
+.player-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.player-table th,
+.player-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+.player-table th {
+  background-color: #f2f2f2;
+}

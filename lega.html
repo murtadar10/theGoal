@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Match Details</title>
+    <link rel="stylesheet" href="lega.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>ببسم الله خير الاسماء</h1>
+      <button id="showLega">جدول الدوري</button>
+      <p id="current-date"></p>
+      <div>
+        <h2>توقيت المباراة</h2>
+        <button onclick="startTimer()">ابدأ العداد</button>
+        <span id="timer">00:00</span>
+      </div>
+      <div>
+        <select class="teams" id="team1"></select>
+        <input type="number" id="score1" value="0" min="0" />
+        <span> X </span>
+        <input type="number" id="score2" value="0" min="0" />
+
+        <select class="teams" id="team2"></select>
+
+        <button onclick="saveAndAbdate()">حفظ النتيجة</button>
+        <button onclick="displayMatchSummaries()">عرض الارشيف</button>
+      </div>
+      <div class="team-section">
+        <h2>لاعبي الفريق الاول</h2>
+        <!-- التشكيلة الاساسية  -->
+        <table class="player-table">
+          <thead>
+            <tr>
+              <th>ت</th>
+              <th>التشكيلة الاساسية</th>
+              <th>التبديل</th>
+              <th>انذارات صفراء</th>
+              <th>بطاقة حمراء</th>
+              <th>الاهداف</th>
+            </tr>
+          </thead>
+          <tbody class="team1players"></tbody>
+          <!-- الاحتياط -->
+          <thead>
+            <tr>
+              <th>ت</th>
+              <th>الاحتياط</th>
+              <th>التبديل</th>
+              <th>انذارات صفراء</th>
+              <th>بطاقة حمراء</th>
+              <th>الاهداف</th>
+            </tr>
+          </thead>
+          <tbody class="team1players2"></tbody>
+        </table>
+      </div>
+      <div class="team-section">
+        <!-- secound team  -->
+        <h2>لاعبي الفريق الثاني</h2>
+        <table class="player-table">
+          <thead>
+            <tr>
+              <th>ت</th>
+              <th>التشكيلة الاساسية</th>
+              <th>التبديل</th>
+              <th>انذارات صفراء</th>
+              <th>بطاقة حمراء</th>
+              <th>الاهداف</th>
+            </tr>
+          </thead>
+          <tbody class="team1players"></tbody>
+          <!-- الاحتياط -->
+          <thead>
+            <tr>
+              <th>ت</th>
+              <th>الاحتياط</th>
+              <th>التبديل</th>
+              <th>انذارات صفراء</th>
+              <th>بطاقة حمراء</th>
+              <th>الاهداف</th>
+            </tr>
+          </thead>
+          <tbody class="team1players2"></tbody>
+        </table>
+      </div>
+      <div>
+        <h2>حكام المباراة</h2>
+        <label for="referee1"> الحكم الاول </label
+        ><input
+          type="text"
+          id="referee1"
+          placeholder="اسم الحكم "
+          value="حسين حيدر"
+        />
+
+        <label for="referee2"> الحكم المساعد </label
+        ><input type="text" id="referee2" placeholder="اسم الحكم " />
+
+        <label for="referee3"> الحكم المساعد </label
+        ><input type="text" id="referee3" placeholder="اسم الحكم " />
+
+        <label for="referee4"> الحكم الرابع </label
+        ><input type="text" id="referee4" placeholder="اسم الحكم " />
+      </div>
+
+      <div class="dontsave">
+        <h2>ارشيف المباريات</h2>
+      </div>
+
+      <div id="match-summary-list" class="summary-list"></div>
+    </div>
+    <!-- جدول ترتيب الفرق  -->
+
+    <div id="capture">
+      <div id="over"></div>
+
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p class="titleOfTable">دوري السدة</p>
+          <table class="table2" id="footballTable">
+            <thead>
+              <tr>
+                <th>الفريق</th>
+                <th>لعب</th>
+                <th>فاز</th>
+                <th>تعادل</th>
+                <th>خسر</th>
+                <th>الفارق</th>
+                <th>له</th>
+                <th>عليه</th>
+                <th>النقاط</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <button id="downloadImage">Download as Image</button>
+          <button id="downloadPDF">Download as PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="table.js"></script>
+    <script src="form.js"></script>
+  </body>
+</html>

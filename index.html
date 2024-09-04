@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول فرق كرة القدم</title>
+    <style>
+        /* إضافة الأنماط الموجودة هنا */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .popup-container {
+            position: fixed;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            overflow-y: auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            z-index: 1000;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .popup-header input {
+            width: 60%;
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        .popup-header button {
+            padding: 5px 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>جدول فرق كرة القدم</h1>
+
+    <h2>أدخل نتيجة مباراة</h2>
+    <select id="team1"></select>
+    <input type="number" id="score1" placeholder="أهداف الفريق 1">
+    <select id="team2"></select>
+    <input type="number" id="score2" placeholder="أهداف الفريق 2">
+    <button onclick="saveMatchSummary()">حفظ ملخص المباراة</button>
+    <button onclick="displayMatchSummaries()">عرض ملخصات المباريات</button>
+
+    <table id="footballTable">
+        <!-- إضافة الجدول هنا -->
+    </table>
+
+    <script>
+        // نفس الدوال والوظائف الموجودة سابقاً مع إضافة البحث
+
+        function saveMatchSummary() {
+            // الحصول على بيانات المباراة
+            const team1Name = document.getElementById("team1").value;
+            const team1Score = document.getElementById("score1").value;
+            const team2Name = document.getElementById("team2").value;
+            const team2Score = document.getElementById("score2").value;
+
+            // حفظ قسم النتيجة والأزرار للتأكد من استرجاعها لاحقًا
+            const scoreSectionHTML = document.querySelector("div > div").innerHTML; // يحتفظ بالنتيجة والأزرار
+            const scoreSectionHTML2 = document.querySelector(".dontsave").innerHTML;
+
+            // إزالة النتيجة والأزرار من الواجهة
+            document.querySelector("div > div").innerHTML = "";
+            document.querySelector(".dontsave").innerHTML = "";
+
+            //  الحصول على هيكلية الواجهة بعد إزالة العناصر 
+            const matchDetailsHTML = document.querySelector(".container").innerHTML;
+
+            // استرجاع قسم النتيجة والأزرار
+            document.querySelector("div > div").innerHTML = scoreSectionHTML;
+            document.querySelector(".dontsave").innerHTML = scoreSectionHTML2;
+
+            // إنشاء ملخص المباراة
+            const matchSummary = `${team1Name},${team1Score},${team2Name},${team2Score},${matchDetailsHTML}`;
+
+            // تخزين ملخص المباراة في Local Storage
+            let matchSummaries = localStorage.getItem("matchSummaries") || "";
+            matchSummaries += matchSummary + ";";
+            localStorage.setItem("matchSummaries", matchSummaries);
+
+            // إظهار رسالة تأكيد وتفريغ الحقول
+            alert("تم حفظ ملخص المباراة بنجاح!");
+            document.querySelectorAll("input, select").forEach((el) => (el.value = ""));
+        }
+
+        function displayMatchSummaries() {
+            // الحصول على محتوى الصفحة المخزن في localStorage
+            const matchSummaries = localStorage.getItem('matchSummaries');
+
+            if (matchSummaries) {
+                // إنشاء عناصر النافذة المنبثقة
+                const overlay = document.createElement('div');
+                overlay.className = 'overlay';
+                
+                const popupContainer = document.createElement('div');
+                popupContainer.className = 'popup-container';
+                
+                const popupHeader = document.createElement('div');
+                popupHeader.className = 'popup-header';
+
+                const searchInput = document.createElement('input');
+                searchInput.id = 'searchQuery';
+                searchInput.placeholder = 'أدخل اسم الفريقين أو التاريخ';
+
+                const searchButton = document.createElement('button');
+                searchButton.textContent = 'بحث';
+                searchButton.onclick = searchMatchSummaries;
+
+                const closeButton = document.createElement('button');
+                closeButton.textContent = 'إغلاق';
+                closeButton.onclick = () => {
+                    document.body.removeChild(overlay);
+                };
+
+                popupHeader.appendChild(searchInput);
+                popupHeader.appendChild(searchButton);
+                popupHeader.appendChild(closeButton);
+                
+                const popupContent = document.createElement('div');
+                popupContent.className = 'popup-content';
+                popupContent.id = 'popupContent';
+
+                // وضع المحتوى في النافذة المنبثقة
+                popupContainer.appendChild(popupHeader);
+                popupContainer.appendChild(popupContent);
+                overlay.appendChild(popupContainer);
+                document.body.appendChild(overlay);
+
+                // عرض جميع ملخصات المباريات عند الفتح
+                displayFilteredSummaries(matchSummaries.split(';'), '');
+            } else {
+                alert('لا توجد ملخصات محفوظة للعرض.');
+            }
+        }
+
+        function displayFilteredSummaries(summaries, query) {
+            const popupContent = document.getElementById('popupContent');
+            popupContent.innerHTML = '';
+
+            summaries.forEach(summary => {
+                if (summary.includes(query)) {
+                    const matchData = summary.split(',');
+                    const matchDetailsHTML = matchData.slice(4).join(',');
+
+                    const matchSummaryElement = document.createElement('div');
+                    matchSummaryElement.className = 'match-summary';
+                    matchSummaryElement.innerHTML = `
+                        <h3>الفريق 1: ${matchData[0]} - الأهداف: ${matchData[1]}</h3>
+                        <h3>الفريق 2: ${matchData[2]} - الأهداف: ${matchData[3]}</h3>
+                        <div>${matchDetailsHTML}</div>
+                    `;
+
+                    popupContent.appendChild(matchSummaryElement);
+                }
+            });
+        }
+
+        function searchMatchSummaries() {
+            const query = document.getElementById('searchQuery').value;
+            const matchSummaries = localStorage.getItem('matchSummaries');
+            if (matchSummaries) {
+                displayFilteredSummaries(matchSummaries.split(';'), query);
+            }
+        }
+    </script>
+</body>
+</html>
